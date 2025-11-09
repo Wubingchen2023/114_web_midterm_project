@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-bs-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>電推 Movie Picks｜電影推薦平台</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">電推 Movie Picks</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navMain" class="collapse navbar-collapse">
+        <!-- 搜尋 -->
+        <form id="searchForm" class="d-flex ms-lg-3 flex-grow-1 my-2 my-lg-0" role="search">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="搜尋片名、劇情關鍵字…" aria-label="Search">
+        </form>
+
+        <!-- 深色模式 -->
+        <div class="form-check form-switch ms-lg-3">
+          <input class="form-check-input" type="checkbox" id="themeToggle" />
+          <label class="form-check-label" for="themeToggle">深色模式</label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <!-- 控制列 -->
+    <section class="mb-3">
+      <div class="row g-2 align-items-end">
+        <div class="col-6 col-md-3">
+          <label for="sortSelect" class="form-label">排序</label>
+          <select id="sortSelect" class="form-select">
+            <option value="rating-desc">評分高→低</option>
+            <option value="year-desc">年份新→舊</option>
+            <option value="title-asc">片名 A→Z</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <label for="ratingRange" class="form-label">最低評分：<span id="ratingLabel">0</span></label>
+          <input type="range" id="ratingRange" class="form-range" min="0" max="10" step="0.5" value="0">
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="form-label d-block">類型（多選）</label>
+          <div id="genreFilters" class="d-flex flex-wrap gap-2">
+            <!-- 事件委派：checkbox 點擊由父層處理 -->
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="劇情" id="g1"><label class="form-check-label" for="g1">劇情</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="動作" id="g2"><label class="form-check-label" for="g2">動作</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="科幻" id="g3"><label class="form-check-label" for="g3">科幻</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="愛情" id="g4"><label class="form-check-label" for="g4">愛情</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="動畫" id="g5"><label class="form-check-label" for="g5">動畫</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="驚悚" id="g6"><label class="form-check-label" for="g6">驚悚</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="喜劇" id="g7"><label class="form-check-label" for="g7">喜劇</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" value="犯罪" id="g8"><label class="form-check-label" for="g8">犯罪</label></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-2">
+          <div class="form-check mt-3 mt-md-0">
+            <input class="form-check-input" type="checkbox" id="favOnly">
+            <label class="form-check-label" for="favOnly">只看收藏</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 電影卡片區（事件委派） -->
+    <section>
+      <div id="cards" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4"></div>
+    </section>
+
+    <!-- 投稿表單 -->
+    <section class="mt-5">
+      <h2 class="h4 mb-3">電影建議投稿</h2>
+      <form id="suggestForm" class="needs-validation" novalidate>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="sTitle" class="form-label">片名</label>
+            <input id="sTitle" name="title" class="form-control" required maxlength="50" placeholder="請輸入片名">
+            <div class="invalid-feedback">請輸入片名（最多 50 字）。</div>
+          </div>
+          <div class="col-md-6">
+            <label for="sEmail" class="form-label">Email（回覆用）</label>
+            <input id="sEmail" name="email" class="form-control" type="email" placeholder="example@domain.com">
+            <div class="invalid-feedback">Email 格式不正確。</div>
+          </div>
+          <div class="col-md-4">
+            <label for="sGenre" class="form-label">類型</label>
+            <select id="sGenre" name="genre" class="form-select" required>
+              <option value="" selected disabled>請選擇</option>
+              <option>劇情</option><option>動作</option><option>科幻</option>
+              <option>愛情</option><option>動畫</option><option>驚悚</option>
+              <option>喜劇</option><option>犯罪</option>
+            </select>
+            <div class="invalid-feedback">請選擇一個類型。</div>
+          </div>
+          <div class="col-md-4">
+            <label for="sRating" class="form-label">推薦評分（1~10）</label>
+            <input id="sRating" name="rating" class="form-control" type="number" min="1" max="10" step="0.5" required>
+            <div class="invalid-feedback">請輸入 1~10 的數字。</div>
+          </div>
+          <div class="col-12">
+            <label for="sReason" class="form-label">推薦理由（至少 10 字）</label>
+            <textarea id="sReason" name="reason" class="form-control" rows="3" required minlength="10" maxlength="200"></textarea>
+            <div class="invalid-feedback">請至少輸入 10 個字的推薦理由。</div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input id="sTerms" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="sTerms">我同意公開顯示我的建議（Email 不會公開）。</label>
+              <div class="invalid-feedback">需勾選同意才能送出。</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">送出建議</button>
+            <button class="btn btn-outline-secondary ms-2" type="reset">清除</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="suggestList" class="list-group mt-3 d-none" aria-live="polite" aria-atomic="true">
+        <!-- 使用者投稿會插入到這裡 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 詳情 Modal -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailTitle">電影詳情</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="detailBody">
+          <!-- 由 JS 動態填入 -->
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 輕量提示 -->
+  <div id="toast" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
