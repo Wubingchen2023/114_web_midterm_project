@@ -1,0 +1,44 @@
+:root {
+  --card-h: 100%;
+}
+body {
+  line-height: 1.6;
+}
+
+/* 卡片 */
+.movie-card {
+  transition: transform .15s ease, box-shadow .15s ease;
+  height: var(--card-h);
+}
+.movie-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.movie-poster {
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  width: 100%;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+
+/* 收藏按鈕狀態 */
+.fav-btn.active {
+  border-color: transparent !important;
+  background: var(--bs-warning-bg-subtle) !important;
+}
+
+/* 建議列表 */
+.suggest-item small {
+  opacity: .75;
+}
+
+/* 自訂 invalid 狀態的動畫微調（UX） */
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid {
+  animation: shake .15s 2;
+}
+@keyframes shake {
+  0%,100%{ transform: translateX(0); }
+  50%{ transform: translateX(2px); }
+}
