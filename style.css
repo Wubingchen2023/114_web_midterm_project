@@ -1,44 +1,256 @@
+/* ===== 基礎樣式 ===== */
 :root {
-  --card-h: 100%;
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --success-color: #198754;
+    --danger-color: #dc3545;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    padding-top: 56px;
+    transition: background-color 0.3s ease;
 }
 
-/* 卡片 */
+/* ===== 深色模式 ===== */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .bg-light {
+    background-color: #2d2d2d !important;
+}
+
+body.dark-mode .card {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #404040;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-color: #404040;
+}
+
+body.dark-mode .text-muted {
+    color: #aaa !important;
+}
+
+/* ===== 導航列 ===== */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* ===== 首頁橫幅 ===== */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0 80px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-section h1 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-section p {
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.hero-section .btn {
+    animation: fadeInUp 1.4s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== 電影卡片 ===== */
 .movie-card {
-  transition: transform .15s ease, box-shadow .15s ease;
-  height: var(--card-h);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
 }
+
 .movie-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-}
-.movie-poster {
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  width: 100%;
-  border-top-left-radius: .5rem;
-  border-top-right-radius: .5rem;
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
-/* 收藏按鈕狀態 */
-.fav-btn.active {
-  border-color: transparent !important;
-  background: var(--bs-warning-bg-subtle) !important;
+.movie-card img {
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* 建議列表 */
-.suggest-item small {
-  opacity: .75;
+.movie-card:hover img {
+    transform: scale(1.05);
 }
 
-/* 自訂 invalid 狀態的動畫微調（UX） */
-.was-validated .form-control:invalid,
-.was-validated .form-select:invalid {
-  animation: shake .15s 2;
+.movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0,0,0,0.7);
+    color: #ffc107;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
 }
-@keyframes shake {
-  0%,100%{ transform: translateX(0); }
-  50%{ transform: translateX(2px); }
+
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255,255,255,0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+}
+
+.favorite-btn.active {
+    color: var(--danger-color);
+}
+
+/* ===== 表單樣式 ===== */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.genre-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genre-btn {
+    transition: all 0.3s ease;
+}
+
+.genre-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* ===== 回到頂部按鈕 ===== */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: none;
+    z-index: 999;
+    animation: fadeIn 0.3s;
+}
+
+#backToTop.show {
+    display: block;
+}
+
+/* ===== 響應式設計 (RWD) ===== */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0 60px;
+        min-height: 400px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .movie-card img {
+        height: 250px;
+    }
+
+    .genre-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .movie-card img {
+        height: 200px;
+    }
+
+    #backToTop {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* ===== 動畫效果 ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* ===== 載入動畫 ===== */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }

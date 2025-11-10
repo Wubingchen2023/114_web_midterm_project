@@ -1,296 +1,502 @@
-// ====== 基本資料（本地靜態，便於 GitHub Pages）======
-const MOVIES = [
-  { id:"tt0111161", title:"刺激1995", year:1994, rating:9.3, runtime:142, genres:["劇情","犯罪"],
-    poster:"https://picsum.photos/seed/tt0111161/400/600",
-    plot:"監獄中的希望與自由寓言，描述安迪在嚴苛體制中尋找救贖。"},
-  { id:"tt0068646", title:"教父", year:1972, rating:9.2, runtime:175, genres:["劇情","犯罪"],
-    poster:"https://picsum.photos/seed/tt0068646/400/600",
-    plot:"柯里昂家族的權力與親情，黑幫史詩的經典之作。"},
-  { id:"tt1375666", title:"全面啟動", year:2010, rating:8.8, runtime:148, genres:["科幻","動作","驚悚"],
-    poster:"https://picsum.photos/seed/tt1375666/400/600",
-    plot:"潛入夢境深處竊取機密，層層現實之間的對決。"},
-  { id:"tt4154796", title:"復仇者聯盟：終局之戰", year:2019, rating:8.4, runtime:181, genres:["動作","科幻"],
-    poster:"https://picsum.photos/seed/tt4154796/400/600",
-    plot:"眾英雄集結最後一戰，逆轉無限手套造成的毀滅。"},
-  { id:"tt7286456", title:"小丑", year:2019, rating:8.4, runtime:122, genres:["劇情","犯罪","驚悚"],
-    poster:"https://picsum.photos/seed/tt7286456/400/600",
-    plot:"在社會邊緣掙扎的小丑，逐步墜入黑暗的成因。"},
-  { id:"tt4154756", title:"復仇者聯盟：無限之戰", year:2018, rating:8.4, runtime:149, genres:["動作","科幻"],
-    poster:"https://picsum.photos/seed/tt4154756/400/600",
-    plot:"薩諾斯收集無限寶石，群英試圖阻止宇宙浩劫。"},
-  { id:"tt4633694", title:"你的名字", year:2016, rating:8.4, runtime:106, genres:["動畫","愛情","劇情"],
-    poster:"https://picsum.photos/seed/tt4633694/400/600",
-    plot:"在夢中交換身體的少男少女，尋找命運的連結。"},
-  { id:"tt6751668", title:"寄生上流", year:2019, rating:8.6, runtime:132, genres:["劇情","驚悚"],
-    poster:"https://picsum.photos/seed/tt6751668/400/600",
-    plot:"兩個階層的家庭交織，黑色幽默下的階級寓言。"},
-  { id:"tt4158110", title:"驚奇隊長", year:2019, rating:6.8, runtime:123, genres:["動作","科幻"],
-    poster:"https://picsum.photos/seed/tt4158110/400/600",
-    plot:"飛行員卡蘿成為宇宙最強英雄之一的起源故事。"},
-  { id:"tt2109248", title:"玩命關頭 7", year:2015, rating:7.1, runtime:137, genres:["動作","驚悚"],
-    poster:"https://picsum.photos/seed/tt2109248/400/600",
-    plot:"家人與速度的選擇，告別保羅沃克的情感之作。"},
-  { id:"tt6723592", title:"天能", year:2020, rating:7.3, runtime:150, genres:["科幻","動作","驚悚"],
-    poster:"https://picsum.photos/seed/tt6723592/400/600",
-    plot:"時間逆轉的諜報行動，理解 = 生存。"},
-  { id:"tt0892769", title:"玩具總動員 3", year:2010, rating:8.3, runtime:103, genres:["動畫","喜劇","劇情"],
-    poster:"https://picsum.photos/seed/tt0892769/400/600",
-    plot:"成長與告別，玩具們面對主人上大學的關卡。"},
+// ===== 電影資料庫 =====
+const moviesData = [
+    {
+        id: 1,
+        title: "科學怪人",
+        genre: "科幻、恐怖",
+        rating: 7.7,
+        year: 2025,
+        description: "故事圍繞在才華橫溢但自負的科學家維克多透過一場可怕的實驗創造一個生物，最終導致創造者和他悲劇的造物都走向毀滅。",
+        image: "https://s.yimg.com/ny/api/res/1.2/5UX6QpABPhLMlA7.4kARoA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTEyMDA7Y2Y9d2VicA--/https://media.zenfs.com/en/creative_bloq_161/c370e669987274950db68ae2f09d288c"
+    },
+    {
+        id: 2,
+        title: "炸藥屋",
+        genre: "驚悚、劇情",
+        rating: 6.4,
+        year: 2025,
+        description: "故事設定在美國遭遇一枚來源不明的核飛彈攻擊之際，飛彈目標直指芝加哥，整個國家從偵測到危機發生僅有十九分鐘時間可以應對。",
+        image: "https://houseofgeekery.com/wp-content/uploads/2025/11/houseposter.jpg"
+    },
+    {
+        id: 3,
+        title: "28年毀滅倒數",
+        genre: "恐怖",
+        rating: 6.6,
+        year: 2025,
+        description: "病毒肆虐倫敦將近 30 年後，一個男孩與父親離開安全的偏遠島嶼，展開危險的狩獵任務。",
+        image: "https://bleedingcool.com/wp-content/uploads/2025/05/twenty_eight_years_later_ver5_xlg-1-1200x900.jpg"
+    },
+    {
+        id: 4,
+        title: "喵的奇幻漂流",
+        genre: "劇情、冒險、動畫",
+        rating: 8.3,
+        year: 2024,
+        description: "洪災過後，勇敢的貓咪登上一艘小船，和船上各種動物一起漂流，探索被水淹沒的神祕荒野世界。",
+        image: "https://auraprods.com/wp-content/uploads/2025/03/flow-blender.webp"
+    },
+    {
+        id: 5,
+        title: "婚姻故事",
+        genre: "愛情、喜劇、劇情",
+        rating: 7.9,
+        year: 2019,
+        description: "本片由曾入圍奧斯卡金像獎的電影人諾亞·包姆巴赫執導，以深刻卻體恤人心的目光，檢視一段婚姻如何走向破裂，家庭在這過程中又是如何分而不散、團結凝聚。",
+        image: "https://miro.medium.com/v2/resize:fit:1400/0*ltEFMs1OtpHBAm4s.jpg"
+    },
+    {
+        id: 6,
+        title: "隨身危機",
+        genre: "動作、驚悚",
+        rating: 6.5,
+        year: 2024,
+        description: "在神秘旅客的勒索之下，年輕的運輸安全管理局員工讓一個危險的包裹登上了平安夜的航班，他必須與這個神秘人鬥智斗勇。",
+        image: "https://lh4.googleusercontent.com/proxy/8lS6bAd9ITGBfD4O_xCLcXVAEBhBcGA72l9B6KXXEVAmgUH3HtOHv5RhDCl3d7kC8qc62LtbNEZFAFKgDX8OnOTR-Vc"
+    },
+    {
+        id: 7,
+        title: "獵魔士：狼之惡夢",
+        genre: "奇幻、動作",
+        rating: 7.4,
+        year: 2021,
+        description: "年輕的維瑟米爾為了擺脫貧困，自願成為獵魔人並前往凱爾·莫罕受訓。他從一個被詛咒的怪物身上，開始質疑獵魔人的道德觀，並捲入了貴族與女術士的陰謀。",
+        image: "https://m.media-amazon.com/images/M/MV5BODQzNDE4N2ItZDAwMC00YzA3LTkwMTEtZDgyMjE3M2ZiY2NiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        id: 8,
+        title: "紫羅蘭永恆花園劇場版",
+        genre: "愛情、動畫",
+        rating: 8.3,
+        year: 2021,
+        description: "在戰爭結束的數年後，薇爾莉特在郵政公司倉庫發現一封退回的信件，這封信的出現促使她踏上了一段尋找基爾伯特少校的旅程。與此同時，她也接到了一位重病少年尤里斯的委託，為其代筆寫下想對家人和朋友說的話。",
+        image: "https://i.ebayimg.com/images/g/IMoAAOSwRTJlJDuc/s-l1200.jpg"
+    },
+    {
+        id: 9,
+        title: "科洛弗悖論",
+        genre: "科幻、懸疑",
+        rating: 5.6,
+        year: 2018,
+        description: "一群科學家正繞行地球測試一項裝置，試圖解救因能源危機瀕臨戰爭的地球。但結果卻面臨另一個充滿黑暗的平行時空。",
+        image: "https://m.media-amazon.com/images/M/MV5BNGU2YjdiNTctYTQxNy00MDExLWE0ZTktYWNhOWI1NTNlNGUxXkEyXkFqcGc@._V1_.jpg"
+    }
 ];
 
-// ====== 狀態 & 工具 ======
-const $ = (sel, root=document) => root.querySelector(sel);
-const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
+// ===== 全域變數 =====
+let selectedGenres = [];
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-const state = {
-  query: "",
-  minRating: 0,
-  genres: new Set(),
-  sort: "rating-desc",
-  favOnly: false,
-  favorites: loadJSON("favorites", {}),
-  suggestions: loadJSON("suggestions", []),
-  theme: loadJSON("theme", "light")
-};
+// ===== 初始化 =====
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
 
-function loadJSON(key, fallback) {
-  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
-  catch (_) { return fallback; }
-}
-function saveJSON(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
-
-function toast(msg) {
-  const box = $("#toast");
-  box.innerHTML = `
-    <div class="toast align-items-center show text-bg-dark border-0" role="status" aria-live="polite">
-      <div class="d-flex">
-        <div class="toast-body">${msg}</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-      </div>
-    </div>`;
-  setTimeout(()=> box.innerHTML="", 2000);
+function initializeApp() {
+    renderMovieCards();
+    renderFavorites();
+    setupEventListeners();
+    applyDarkMode();
+    setupFormValidation();
 }
 
-// ====== 篩選 / 排序 ======
-function getFilteredMovies() {
-  let list = MOVIES.filter(m => {
-    const text = (m.title + " " + m.plot).toLowerCase();
-    const hitText = text.includes(state.query.toLowerCase());
-    const hitRating = Number(m.rating) >= state.minRating;
-    const hitGenres = state.genres.size
-      ? m.genres.some(g => state.genres.has(g))
-      : true;
-    const hitFav = state.favOnly ? Boolean(state.favorites[m.id]) : true;
-    return hitText && hitRating && hitGenres && hitFav;
-  });
+// ===== 渲染電影卡片 =====
+function renderMovieCards() {
+    const container = document.getElementById('movieCards');
+    container.innerHTML = '';
 
-  switch (state.sort) {
-    case "year-desc":   list.sort((a,b)=> b.year - a.year); break;
-    case "title-asc":   list.sort((a,b)=> a.title.localeCompare(b.title, 'zh-Hant')); break;
-    default:            list.sort((a,b)=> b.rating - a.rating); // rating-desc
-  }
-  return list;
+    moviesData.forEach(movie => {
+        const isFavorite = favorites.some(fav => fav.id === movie.id);
+        const card = createMovieCard(movie, isFavorite);
+        container.appendChild(card);
+    });
 }
 
-// ====== UI 渲染 ======
-const cards = $("#cards");
+function createMovieCard(movie, isFavorite = false) {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4';
 
-function render() {
-  cards.innerHTML = "";
-  const list = getFilteredMovies();
-  if (!list.length) {
-    cards.innerHTML = `<div class="col"><div class="alert alert-warning">找不到符合條件的電影。</div></div>`;
-    return;
-  }
-  const frag = document.createDocumentFragment();
-  list.forEach(m => frag.appendChild(makeCard(m)));
-  cards.appendChild(frag);
-}
-
-function makeCard(m) {
-  // createElement + DOM 組裝
-  const col = document.createElement("div");
-  col.className = "col";
-  col.innerHTML = `
-    <div class="card movie-card h-100" data-id="${m.id}">
-      <img class="movie-poster" src="${m.poster}" alt="${m.title}">
-      <div class="card-body d-flex flex-column">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h3 class="h6 card-title mb-0">${m.title}</h3>
-          <span class="badge text-bg-primary">★ ${m.rating}</span>
+    col.innerHTML = `
+        <div class="card movie-card">
+            <div class="position-relative">
+                <img src="${movie.image}" class="card-img-top" alt="${movie.title}">
+                <button class="favorite-btn ${isFavorite ? 'active' : ''}" onclick="toggleFavorite(${movie.id})">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <span class="movie-rating">
+                    <i class="fas fa-star"></i> ${movie.rating}
+                </span>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="text-muted mb-2">
+                    <i class="fas fa-tag me-1"></i>${movie.genre} | ${movie.year}
+                </p>
+                <p class="card-text">${movie.description}</p>
+                <button class="btn btn-primary btn-sm" onclick="showMovieDetails(${movie.id})">
+                    查看詳情
+                </button>
+            </div>
         </div>
-        <p class="card-text small text-body-secondary mb-2">${m.year} · ${m.runtime} 分鐘</p>
-        <p class="card-text flex-grow-1">${m.plot}</p>
-        <div class="mt-2 d-flex flex-wrap gap-1">
-          ${m.genres.map(g=>`<span class="badge text-bg-secondary">${g}</span>`).join("")}
-        </div>
-      </div>
-      <div class="card-footer d-flex gap-2">
-        <button class="btn btn-sm btn-outline-warning fav-btn ${state.favorites[m.id]?'active':''}">收藏</button>
-        <button class="btn btn-sm btn-outline-primary detail-btn" data-bs-toggle="modal" data-bs-target="#detailModal">詳情</button>
-      </div>
-    </div>`;
-  return col;
+    `;
+
+    return col;
 }
 
-// ====== 事件綁定（事件委派）======
-cards.addEventListener("click", (e) => {
-  const card = e.target.closest(".movie-card");
-  if (!card) return;
-  const id = card.dataset.id;
-  if (e.target.classList.contains("fav-btn")) {
-    state.favorites[id] = state.favorites[id] ? 0 : 1;
-    saveJSON("favorites", state.favorites);
-    e.target.classList.toggle("active");
-    toast(state.favorites[id] ? "已加入收藏" : "已移除收藏");
-  }
-  if (e.target.classList.contains("detail-btn")) {
-    openDetail(id);
-  }
-});
+// ===== 收藏功能 =====
+function toggleFavorite(movieId) {
+    const movie = moviesData.find(m => m.id === movieId);
+    const existingIndex = favorites.findIndex(fav => fav.id === movieId);
 
-// 類型複選（父層委派）
-$("#genreFilters").addEventListener("change", (e) => {
-  if (e.target.matches("input[type=checkbox]")) {
-    if (e.target.checked) state.genres.add(e.target.value);
-    else state.genres.delete(e.target.value);
-    render();
-  }
-});
+    if (existingIndex > -1) {
+        favorites.splice(existingIndex, 1);
+        showNotification('已從收藏中移除', 'info');
+    } else {
+        favorites.push(movie);
+        showNotification('已加入收藏', 'success');
+    }
 
-// 搜尋（即時）
-$("#searchInput").addEventListener("input", debounce((e)=>{
-  state.query = e.target.value.trim();
-  render();
-}, 200));
-
-// 排序
-$("#sortSelect").addEventListener("change", e => {
-  state.sort = e.target.value;
-  render();
-});
-
-// 評分區間
-const ratingRange = $("#ratingRange");
-const ratingLabel = $("#ratingLabel");
-ratingRange.addEventListener("input", e => {
-  ratingLabel.textContent = e.target.value;
-});
-ratingRange.addEventListener("change", e => {
-  state.minRating = Number(e.target.value);
-  render();
-});
-
-// 只看收藏
-$("#favOnly").addEventListener("change", e => {
-  state.favOnly = e.target.checked;
-  render();
-});
-
-// 深色模式
-const html = document.documentElement;
-$("#themeToggle").checked = state.theme === "dark";
-applyTheme(state.theme);
-$("#themeToggle").addEventListener("change", e=>{
-  const t = e.target.checked ? "dark" : "light";
-  applyTheme(t);
-  saveJSON("theme", t);
-});
-function applyTheme(t) { html.setAttribute("data-bs-theme", t); }
-
-// ====== 詳情 Modal ======
-function openDetail(id) {
-  const m = MOVIES.find(x=>x.id===id);
-  if (!m) return;
-  $("#detailTitle").textContent = `${m.title}（${m.year}）`;
-  $("#detailBody").innerHTML = `
-    <div class="row g-3">
-      <div class="col-md-4">
-        <img class="img-fluid rounded" src="${m.poster}" alt="${m.title}">
-      </div>
-      <div class="col-md-8">
-        <p class="mb-1"><strong>評分：</strong>${m.rating} / 10</p>
-        <p class="mb-1"><strong>片長：</strong>${m.runtime} 分鐘</p>
-        <p class="mb-1"><strong>類型：</strong>${m.genres.join("、")}</p>
-        <p class="mt-2">${m.plot}</p>
-      </div>
-    </div>`;
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    renderMovieCards();
+    renderFavorites();
 }
 
-// ====== 投稿表單（Constraint Validation + 攔截）======
-const suggestForm = $("#suggestForm");
-const suggestList = $("#suggestList");
+function renderFavorites() {
+    const container = document.getElementById('favoritesContainer');
+    
+    if (favorites.length === 0) {
+        container.innerHTML = `
+            <div class="col-12 text-center text-muted">
+                <i class="fas fa-heart fa-3x mb-3"></i>
+                <p>尚無收藏電影，點擊愛心圖示將喜歡的電影加入收藏</p>
+            </div>
+        `;
+        return;
+    }
 
-// 自訂錯誤訊息（示範 setCustomValidity）
-$("#sReason").addEventListener("input", (e)=>{
-  if (e.target.value.trim().length < 10) {
-    e.target.setCustomValidity("推薦理由至少 10 個字喔！");
-  } else {
-    e.target.setCustomValidity("");
-  }
-});
-
-suggestForm.addEventListener("submit", (e)=>{
-  e.preventDefault();
-  e.stopPropagation();
-
-  if (!suggestForm.checkValidity()) {
-    suggestForm.classList.add("was-validated");
-    toast("請修正表單後再送出");
-    return;
-  }
-
-  const data = {
-    title: $("#sTitle").value.trim(),
-    email: $("#sEmail").value.trim(),
-    genre: $("#sGenre").value,
-    rating: Number($("#sRating").value),
-    reason: $("#sReason").value.trim(),
-    ts: new Date().toISOString()
-  };
-  state.suggestions.unshift(data);
-  saveJSON("suggestions", state.suggestions);
-  addSuggestItem(data, true);
-
-  suggestForm.reset();
-  suggestForm.classList.remove("was-validated");
-  toast("收到你的推薦，已加入清單！");
-  $("#sTitle").focus();
-});
-
-function addSuggestItem(item, showListIfHidden=false) {
-  if (showListIfHidden) suggestList.classList.remove("d-none");
-  const el = document.createElement("a");
-  el.href = "#";
-  el.className = "list-group-item list-group-item-action suggest-item";
-  el.innerHTML = `
-    <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">《${item.title}》— ${item.genre}（★${item.rating}）</h6>
-      <small>${new Date(item.ts).toLocaleString('zh-TW')}</small>
-    </div>
-    <p class="mb-1">${item.reason}</p>
-    <small>不公開的聯絡：${item.email || "（未提供）"}</small>`;
-  suggestList.appendChild(el);
+    container.innerHTML = '';
+    favorites.forEach(movie => {
+        const card = createMovieCard(movie, true);
+        container.appendChild(card);
+    });
 }
 
-// 初始化：載入投稿列表
-(function init() {
-  // 主畫面
-  ratingLabel.textContent = ratingRange.value;
-  render();
+function clearAllFavorites() {
+    if (confirm('確定要清空所有收藏嗎？')) {
+        favorites = [];
+        localStorage.removeItem('favorites');
+        renderMovieCards();
+        renderFavorites();
+        showNotification('已清空所有收藏', 'info');
+    }
+}
 
-  // 投稿
-  if (state.suggestions.length) {
-    suggestList.classList.remove("d-none");
-    state.suggestions.forEach(s => addSuggestItem(s));
-  }
-})();
+// ===== 表單驗證 =====
+function setupFormValidation() {
+    const form = document.getElementById('recommendForm');
+    const genreButtons = document.querySelectorAll('.genre-btn');
+    const messageField = document.getElementById('userMessage');
+    const charCount = document.getElementById('charCount');
 
-// ====== 小工具：防抖 ======
-function debounce(fn, delay=200){
-  let t;
-  return (...args) => {
-    clearTimeout(t);
-    t = setTimeout(()=> fn(...args), delay);
-  };
+    // 類型選擇
+    genreButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const genre = this.dataset.genre;
+            
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                selectedGenres = selectedGenres.filter(g => g !== genre);
+            } else {
+                this.classList.add('active');
+                selectedGenres.push(genre);
+            }
+
+            validateGenres();
+        });
+    });
+
+    // 字元計數
+    messageField.addEventListener('input', function() {
+        const remaining = 200 - this.value.length;
+        charCount.textContent = remaining;
+    });
+
+    // 表單提交
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateForm()) {
+            submitRecommendation();
+        }
+    });
+
+    // 即時驗證
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+
+        input.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+                validateField(this);
+            }
+        });
+    });
+}
+
+function validateForm() {
+    const form = document.getElementById('recommendForm');
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    let isValid = true;
+
+    inputs.forEach(input => {
+        if (!validateField(input)) {
+            isValid = false;
+        }
+    });
+
+    if (!validateGenres()) {
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+
+    // 基本必填檢查
+    if (field.hasAttribute('required') && !value) {
+        isValid = false;
+        errorMessage = '此欄位為必填';
+    }
+
+    // 姓名驗證
+    if (field.id === 'userName' && value) {
+        if (value.length < 2) {
+            isValid = false;
+            errorMessage = '姓名至少需要2個字元';
+        }
+    }
+
+    // Email 驗證
+    if (field.id === 'userEmail' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            isValid = false;
+            errorMessage = '請輸入有效的電子郵件地址';
+        }
+    }
+
+    // 年齡驗證
+    if (field.id === 'userAge' && value) {
+        const age = parseInt(value);
+        if (age < 13 || age > 100) {
+            isValid = false;
+            errorMessage = '年齡必須在13-100之間';
+        }
+    }
+
+    // Checkbox 驗證
+    if (field.type === 'checkbox' && field.hasAttribute('required')) {
+        if (!field.checked) {
+            isValid = false;
+            errorMessage = '請同意服務條款';
+        }
+    }
+
+    // 更新 UI
+    if (isValid) {
+        field.classList.remove('is-invalid');
+        field.classList.add('is-valid');
+    } else {
+        field.classList.remove('is-valid');
+        field.classList.add('is-invalid');
+        const feedback = field.nextElementSibling;
+        if (feedback && feedback.classList.contains('invalid-feedback')) {
+            feedback.textContent = errorMessage;
+        }
+    }
+
+    return isValid;
+}
+
+function validateGenres() {
+    const genreError = document.getElementById('genreError');
+    
+    if (selectedGenres.length === 0) {
+        genreError.textContent = '請至少選擇一個偏好類型';
+        genreError.style.display = 'block';
+        return false;
+    } else {
+        genreError.textContent = '';
+        genreError.style.display = 'none';
+        return true;
+    }
+}
+
+// ===== 提交推薦 =====
+function submitRecommendation() {
+    const userName = document.getElementById('userName').value;
+    const form = document.getElementById('recommendForm');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // 顯示載入狀態
+    submitBtn.innerHTML = '<span class="loading"></span> 處理中...';
+    submitBtn.disabled = true;
+
+    // 模擬 API 請求
+    setTimeout(() => {
+        // 根據選擇的類型推薦電影
+        const recommended = moviesData.filter(movie => 
+            selectedGenres.includes(movie.genre)
+        ).slice(0, 3);
+
+        displayRecommendations(userName, recommended);
+
+        // 儲存到 localStorage
+        const userData = {
+            name: userName,
+            genres: selectedGenres,
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem('lastRecommendation', JSON.stringify(userData));
+
+        // 恢復按鈕
+        submitBtn.innerHTML = '<i class="fas fa-search me-2"></i>取得推薦';
+        submitBtn.disabled = false;
+
+        // 滾動到結果
+        setTimeout(() => {
+            document.getElementById('recommendResult').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }, 300);
+    }, 1500);
+}
+
+function displayRecommendations(userName, movies) {
+    const resultDiv = document.getElementById('recommendResult');
+    const moviesContainer = document.getElementById('recommendedMovies');
+
+    moviesContainer.innerHTML = '';
+
+    if (movies.length === 0) {
+        moviesContainer.innerHTML = `
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    很抱歉，目前沒有符合您偏好的電影推薦
+                </div>
+            </div>
+        `;
+    } else {
+        movies.forEach(movie => {
+            const col = document.createElement('div');
+            col.className = 'col-md-4';
+            col.innerHTML = `
+                <div class="card">
+                    <img src="${movie.image}" class="card-img-top" alt="${movie.title}">
+                    <div class="card-body">
+                        <h6 class="card-title">${movie.title}</h6>
+                        <p class="card-text text-muted small">${movie.description}</p>
+                        <span class="badge bg-primary">${movie.genre}</span>
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-star"></i> ${movie.rating}
+                        </span>
+                    </div>
+                </div>
+            `;
+            moviesContainer.appendChild(col);
+        });
+    }
+
+    resultDiv.style.display = 'block';
+    resultDiv.classList.add('fade-in');
+}
+
+// ===== 深色模式 =====
+function applyDarkMode() {
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+}
+
+function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    localStorage.setItem('darkMode', isDarkMode);
+    applyDarkMode();
+}
+
+// ===== 事件監聽器 =====
+function setupEventListeners() {
+    // 深色模式切換
+    document.getElementById('themeToggle').addEventListener('click', toggleDarkMode);
+
+    // 清空收藏
+    document.getElementById('clearFavorites').addEventListener('click', clearAllFavorites);
+
+    // 回到頂部
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 平滑滾動
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+}
+
+// ===== 輔助函數 =====
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function showMovieDetails(movieId) {
+    const movie = moviesData.find(m => m.id === movieId);
+    alert(`電影：${movie.title}\n類型：${movie.genre}\n評分：${movie.rating}\n年份：${movie.year}\n\n${movie.description}`);
+}
+
+function showNotification(message, type = 'success') {
+    // 創建通知元素
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type} position-fixed top-0 start-50 translate-middle-x mt-3`;
+    notification.style.zIndex = '9999';
+    notification.innerHTML = `
+        <i class="fas fa-check-circle me-2"></i>${message}
+    `;
+
+    document.body.appendChild(notification);
+
+    // 3秒後移除
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
