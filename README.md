@@ -21,13 +21,14 @@
 
   * 提供「我的收藏電影」頁面與「清空收藏」操作，未收藏時顯示提示文字。
  
-# 技術亮點
+# 使用技術
 - HTML5 語意化結構與 RWD 版面。
 - CSS3 + Bootstrap 5 風格與排版。
 - JavaScript 實作互動（表單驗證、收藏區塊顯示、導覽切換等）。
 - DOM 操作（查詢節點、監聽事件、動態插入內容）。
 - HTML5 Constraint Validation API（最小字數、年齡範圍、Email 格式、條款勾選等）。
 # GitHub Pages 網址 |(https://wubingchen2023.github.io/114_web_midterm_project/)
+
 
 
 
