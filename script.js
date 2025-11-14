@@ -7,7 +7,8 @@ const moviesData = [
         rating: 7.7,
         year: 2025,
         description: "故事圍繞在才華橫溢但自負的科學家維克多透過一場可怕的實驗創造一個生物，最終導致創造者和他悲劇的造物都走向毀滅。",
-        image: "https://s.yimg.com/ny/api/res/1.2/5UX6QpABPhLMlA7.4kARoA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTEyMDA7Y2Y9d2VicA--/https://media.zenfs.com/en/creative_bloq_161/c370e669987274950db68ae2f09d288c"
+        image: "https://s.yimg.com/ny/api/res/1.2/5UX6QpABPhLMlA7.4kARoA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTEyMDA7Y2Y9d2VicA--/https://media.zenfs.com/en/creative_bloq_161/c370e669987274950db68ae2f09d288c",
+        trailerUrl: "youtube.com/watch?v=8s6wdNpKKpw"
     },
     {
         id: 2,
@@ -16,7 +17,8 @@ const moviesData = [
         rating: 6.4,
         year: 2025,
         description: "故事設定在美國遭遇一枚來源不明的核飛彈攻擊之際，飛彈目標直指芝加哥，整個國家從偵測到危機發生僅有十九分鐘時間可以應對。",
-        image: "https://houseofgeekery.com/wp-content/uploads/2025/11/houseposter.jpg"
+        image: "https://houseofgeekery.com/wp-content/uploads/2025/11/houseposter.jpg",
+        trailerUrl: "https://www.youtube.com/watch?v=gPGl4USV4cM"
     },
     {
         id: 3,
@@ -25,7 +27,8 @@ const moviesData = [
         rating: 6.6,
         year: 2025,
         description: "病毒肆虐倫敦將近 30 年後，一個男孩與父親離開安全的偏遠島嶼，展開危險的狩獵任務。",
-        image: "https://bleedingcool.com/wp-content/uploads/2025/05/twenty_eight_years_later_ver5_xlg-1-1200x900.jpg"
+        image: "https://bleedingcool.com/wp-content/uploads/2025/05/twenty_eight_years_later_ver5_xlg-1-1200x900.jpg",
+        trailerUrl: "https://www.youtube.com/watch?v=ylavIeVKrC4"
     },
     {
         id: 4,
@@ -34,7 +37,8 @@ const moviesData = [
         rating: 8.3,
         year: 2024,
         description: "洪災過後，勇敢的貓咪登上一艘小船，和船上各種動物一起漂流，探索被水淹沒的神祕荒野世界。",
-        image: "https://auraprods.com/wp-content/uploads/2025/03/flow-blender.webp"
+        image: "https://auraprods.com/wp-content/uploads/2025/03/flow-blender.webp",
+        trailerUrl: "https://www.youtube.com/watch?v=SuAw1ejdi6M"
     },
     {
         id: 5,
@@ -43,7 +47,8 @@ const moviesData = [
         rating: 7.9,
         year: 2019,
         description: "本片由曾入圍奧斯卡金像獎的電影人諾亞·包姆巴赫執導，以深刻卻體恤人心的目光，檢視一段婚姻如何走向破裂，家庭在這過程中又是如何分而不散、團結凝聚。",
-        image: "https://miro.medium.com/v2/resize:fit:1400/0*ltEFMs1OtpHBAm4s.jpg"
+        image: "https://miro.medium.com/v2/resize:fit:1400/0*ltEFMs1OtpHBAm4s.jpg",
+        trailerUrl: "https://www.youtube.com/watch?v=4ovnOXh4yY4"
     },
     {
         id: 6,
@@ -52,7 +57,9 @@ const moviesData = [
         rating: 6.5,
         year: 2024,
         description: "在神秘旅客的勒索之下，年輕的運輸安全管理局員工讓一個危險的包裹登上了平安夜的航班，他必須與這個神秘人鬥智斗勇。",
-        image: "https://lh4.googleusercontent.com/proxy/8lS6bAd9ITGBfD4O_xCLcXVAEBhBcGA72l9B6KXXEVAmgUH3HtOHv5RhDCl3d7kC8qc62LtbNEZFAFKgDX8OnOTR-Vc"
+        image: "https://lh4.googleusercontent.com/proxy/8lS6bAd9ITGBfD4O_xCLcXVAEBhBcGA72l9B6KXXEVAmgUH3HtOHv5RhDCl3d7kC8qc62LtbNEZFAFKgDX8OnOTR-Vc",
+        trailerUrl: "https://www.youtube.com/watch?v=Q1baSyWNjrY"
+    
     },
     {
         id: 7,
@@ -61,16 +68,18 @@ const moviesData = [
         rating: 7.4,
         year: 2021,
         description: "年輕的維瑟米爾為了擺脫貧困，自願成為獵魔人並前往凱爾·莫罕受訓。他從一個被詛咒的怪物身上，開始質疑獵魔人的道德觀，並捲入了貴族與女術士的陰謀。",
-        image: "https://m.media-amazon.com/images/M/MV5BODQzNDE4N2ItZDAwMC00YzA3LTkwMTEtZDgyMjE3M2ZiY2NiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+        image: "https://m.media-amazon.com/images/M/MV5BODQzNDE4N2ItZDAwMC00YzA3LTkwMTEtZDgyMjE3M2ZiY2NiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        trailerUrl: "https://www.youtube.com/watch?v=sfGqoM2HQhY"
     },
     {
         id: 8,
         title: "紫羅蘭永恆花園劇場版",
         genre: "愛情、動畫",
         rating: 8.3,
-        year: 2021,
+        year: 2020,
         description: "在戰爭結束的數年後，薇爾莉特在郵政公司倉庫發現一封退回的信件，這封信的出現促使她踏上了一段尋找基爾伯特少校的旅程。與此同時，她也接到了一位重病少年尤里斯的委託，為其代筆寫下想對家人和朋友說的話。",
-        image: "https://i.ebayimg.com/images/g/IMoAAOSwRTJlJDuc/s-l1200.jpg"
+        image: "https://i.ebayimg.com/images/g/IMoAAOSwRTJlJDuc/s-l1200.jpg",
+        trailerUrl: "https://www.youtube.com/watch?v=piRMniE-UUs"
     },
     {
         id: 9,
@@ -79,7 +88,8 @@ const moviesData = [
         rating: 5.6,
         year: 2018,
         description: "一群科學家正繞行地球測試一項裝置，試圖解救因能源危機瀕臨戰爭的地球。但結果卻面臨另一個充滿黑暗的平行時空。",
-        image: "https://m.media-amazon.com/images/M/MV5BNGU2YjdiNTctYTQxNy00MDExLWE0ZTktYWNhOWI1NTNlNGUxXkEyXkFqcGc@._V1_.jpg"
+        image: "https://m.media-amazon.com/images/M/MV5BNGU2YjdiNTctYTQxNy00MDExLWE0ZTktYWNhOWI1NTNlNGUxXkEyXkFqcGc@._V1_.jpg",
+        trailerUrl: "https://www.youtube.com/watch?v=GlTUKlcPID0"
     }
 ];
 
@@ -117,6 +127,11 @@ function createMovieCard(movie, isFavorite = false) {
     const col = document.createElement('div');
     col.className = 'col-md-6 col-lg-4';
 
+    // 處理預告片連結（補上 https://）
+    const trailerLink = movie.trailerUrl.startsWith('http')
+        ? movie.trailerUrl
+        : `https://${movie.trailerUrl}`;
+
     col.innerHTML = `
         <div class="card movie-card">
             <div class="position-relative">
@@ -133,8 +148,20 @@ function createMovieCard(movie, isFavorite = false) {
                 <p class="text-muted mb-2">
                     <i class="fas fa-tag me-1"></i>${movie.genre} | ${movie.year}
                 </p>
-                <p class="card-text">${movie.description}</p>
-                <button class="btn btn-primary btn-sm" onclick="showMovieDetails(${movie.id})">
+                
+                <!-- 把原本的劇情簡介拿掉 -->
+                <!-- <p class="card-text">${movie.description}</p> -->
+
+                <!-- 改成「開啟預告片」按鈕 -->
+                <a href="${trailerLink}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn btn-danger btn-sm">
+                    <i class="fab fa-youtube me-1"></i> 觀看預告片
+                </a>
+
+                <!-- 如果還要保留查看詳情就留著，不要就刪掉 -->
+                <button class="btn btn-primary btn-sm ms-2" onclick="showMovieDetails(${movie.id})">
                     查看詳情
                 </button>
             </div>
@@ -143,6 +170,7 @@ function createMovieCard(movie, isFavorite = false) {
 
     return col;
 }
+
 
 // ===== 收藏功能 =====
 function toggleFavorite(movieId) {
